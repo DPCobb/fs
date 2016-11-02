@@ -21,17 +21,27 @@ $view = new Views();
 // If p is not empty decide on view to display
 if (!empty($_GET['p']))
 {
-    // get p which should be which view to call, send it to view as param
+    // Use switch/case to decide what p is and what view needs to be displayed
     switch ($_GET['p'])
     {
-        case 'viewtest':
-            $view->testView();
+        case 'create':
+            $view->displayView('create/index');
+            break;
+        case 'update':
+            $view->displayView('update/index');
+            break;
+        case 'read':
+            $view->displayView('read/index');
+            break;
+        case 'delete':
+            $view->displayView('delete/index');
             break;
         default:
             $view->displayView('index/index');
             break;
     }
 }
+// If there is no p value show the default, index.php
 else
 {
     $view->displayView('index/index');
