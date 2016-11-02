@@ -16,6 +16,7 @@ require './models/DBCred.php';
 
 // Instantiate classes for required /models/
 $view = new Views();
+$select = new ReadData();
 
 // View is decided on by index.php?p=
 // If p is not empty decide on view to display
@@ -32,6 +33,12 @@ if (!empty($_GET['p']))
             break;
         case 'read':
             $view->displayView('read/index');
+            if(isset($_GET['id'])){
+                $select->getData($_GET['id']);
+            }
+            else {
+                $select->getAllData();
+            }
             break;
         case 'delete':
             $view->displayView('delete/index');

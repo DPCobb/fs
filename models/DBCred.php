@@ -6,7 +6,7 @@
  */
 
 // Setup db variables
-$host = 'localhost';
+$host = 'testbox';
 $dbname = 'my_app';
 $user = 'my_app';
 $pass = 'secret';
