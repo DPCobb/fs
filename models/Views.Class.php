@@ -1,14 +1,10 @@
 <?php
 class Views
 {
-    function __construct()
+    function displayView($filename="", $result=array())
     {
-
-    }
-
-    function testView()
-    {
-        echo 'view test is working';
+        $file = './views/' . $filename . '.php';
+        include $file;
     }
 }
 ?>

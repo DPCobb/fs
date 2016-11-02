@@ -17,23 +17,24 @@ require './models/DBCred.php';
 // Instantiate classes for required /models/
 $view = new Views();
 
-// Page is decided on by index.php?p=
-// If p is not empty decide on page to display
+// View is decided on by index.php?p=
+// If p is not empty decide on view to display
 if (!empty($_GET['p']))
 {
+    // get p which should be which view to call, send it to view as param
     switch ($_GET['p'])
     {
         case 'viewtest':
             $view->testView();
             break;
         default:
-            $view->testView();
+            $view->displayView('index/index');
             break;
     }
 }
 else
 {
-    $view->testView();
+    $view->displayView('index/index');
 }
 
 
