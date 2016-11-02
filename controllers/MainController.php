@@ -14,7 +14,27 @@ require './models/DeleteData.Class.php';
 require './models/CreateData.Class.php';
 require './models/DBCred.php';
 
+// Instantiate classes for required /models/
+$view = new Views();
 
+// Page is decided on by index.php?p=
+// If p is not empty decide on page to display
+if (!empty($_GET['p']))
+{
+    switch ($_GET['p'])
+    {
+        case 'viewtest':
+            $view->testView();
+            break;
+        default:
+            $view->testView();
+            break;
+    }
+}
+else
+{
+    $view->testView();
+}
 
 
 ?>
