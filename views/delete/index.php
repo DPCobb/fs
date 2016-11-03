@@ -5,7 +5,7 @@
  * CREATED: 11/2016
  */
 
-require './views/index/DeleteView.Class.php';
+require './views/delete/DeleteView.Class.php';
 
 $view = new DeleteView('Remove User');
 $view->buildDisplay();
