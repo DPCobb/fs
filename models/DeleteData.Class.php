@@ -8,8 +8,6 @@
 class DeleteData
 {
 
-    public $msg;
-
     /*
      * deleteData Function
      *
