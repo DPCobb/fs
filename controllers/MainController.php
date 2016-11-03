@@ -7,18 +7,11 @@
 
 // Require needed model files
 require './models/Views.Class.php';
-require './models/CreateData.Class.php';
-require './models/ReadData.Class.php';
-require './models/UpdateData.Class.php';
-require './models/DeleteData.Class.php';
-require './models/CreateData.Class.php';
-require './models/DBCred.php';
 
-// Instantiate classes for required /models/
+// Instantiate class for view logic
 $view = new Views();
-$select = new ReadData();
 
-// View is decided on by index.php?p=
+// View is decided on by index.php?p=[page]
 // If p is not empty decide on view to display
 if (!empty($_GET['p']))
 {
@@ -33,12 +26,6 @@ if (!empty($_GET['p']))
             break;
         case 'read':
             $view->displayView('read/index');
-            if(isset($_GET['id'])){
-                $select->getData($_GET['id']);
-            }
-            else {
-                $select->getAllData();
-            }
             break;
         case 'delete':
             $view->displayView('delete/index');
