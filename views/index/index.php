@@ -1,8 +1,13 @@
-<html>
-<head>
+<?php
+/*
+ * PROJECT: Formstack Assessment
+ * AUTHOR: Daniel Cobb
+ * CREATED: 11/2016
+ */
 
-</head>
-<body>
-<h1>Hello World</h1>
-</body>
-</html>
+require './views/index/IndexView.Class.php';
+
+$view = new IndexView('Home');
+$view->buildDisplay();
+
+?>
