@@ -19,8 +19,9 @@ class DeleteController
         if(!empty($_GET['id']))
         {
             $this->userId = $_GET['id'];
-            $data = new DeleteData();
+            $data = new DeleteData($this->userId);
             echo $data->deleteData($this->userId);
+            echo '<a href="index.php" class="button">Home</a>';
         }
     }
 
