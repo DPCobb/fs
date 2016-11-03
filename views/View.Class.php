@@ -28,6 +28,8 @@ class View
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <title>'.$this->title.'</title>
+            <link href="./public/css/normalize.css" rel="stylesheet" type="text/css"/>
+            <link href="./public/css/skeleton.css" rel="stylesheet" type="text/css"/>
             <link href="./public/css/main.css" rel="stylesheet" type="text/css"/>
         </head>
         <body>
