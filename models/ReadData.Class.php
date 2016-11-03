@@ -24,19 +24,7 @@ class ReadData
         $sth->bindParam(':id', $id);
         $sth->execute();
         $result = $sth->fetchAll();
-        foreach($result as $row) {
-            echo '
-            <ul>
-                <li>ID : '. $row['id'] . '</li>
-                <li>First Name : '. $row['firstname'] . '</li>
-                <li>Last Name : '. $row['lastname'] . '</li>
-                <li>Email : '. $row['email'] . '</li>
-                <li>Password : '. $row['password'] . '</li>
-            </ul>
-            ';
-        }
-
-        var_dump($result);
+        return $result;
     }
 
     function getAllData()
@@ -46,19 +34,7 @@ class ReadData
         $sth = $dbh->prepare("SELECT * FROM user");
         $sth->execute();
         $result = $sth->fetchAll();
-        foreach($result as $row) {
-            echo '
-            <ul>
-                <li>ID : '. $row['id'] . '</li>
-                <li>First Name : '. $row['firstname'] . '</li>
-                <li>Last Name : '. $row['lastname'] . '</li>
-                <li>Email : '. $row['email'] . '</li>
-                <li>Password : '. $row['password'] . '</li>
-            </ul>
-            ';
-        }
-
-        var_dump($result);
+        return $result;
     }
 }
 ?>
