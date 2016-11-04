@@ -34,6 +34,7 @@ class View
         </head>
         <body>
         <main>
+        <h1>Formstack Assessment</h1>
         ';
     }
 
