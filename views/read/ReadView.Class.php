@@ -7,6 +7,7 @@
 
 require './views/View.Class.php';
 require './controllers/ReadController.php';
+
 class ReadView extends View
 {
 
@@ -17,7 +18,7 @@ class ReadView extends View
 
     function contentBuild()
     {
-        $data = new ReadController();
+        $data = new read_control\ReadController();
         echo $data->dashboard();
     }
 

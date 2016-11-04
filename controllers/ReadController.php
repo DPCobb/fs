@@ -4,6 +4,9 @@
  * AUTHOR: Daniel Cobb
  * CREATED: 11/2016
  */
+namespace read_control;
+
+use \read_data as read_data;
 
 require './models/ReadData.Class.php';
 class ReadController
@@ -12,13 +15,12 @@ class ReadController
 
     function __construct()
     {
-        $this->data = new ReadData();
+        $this->data = new read_data\ReadData();
     }
 
     function buildDashboard($data)
     {
-        if($data != 0)
-        {
+        if($data != 0) {
             echo'
         <table>
         <thead>
@@ -48,8 +50,7 @@ class ReadController
             }
             echo '</tbody></table>';
         }
-        else
-        {
+        else {
             echo '</tbody></table>';
             echo '<h2>Not a valid User ID</h2>';
         }

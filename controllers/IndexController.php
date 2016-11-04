@@ -4,6 +4,9 @@
  * AUTHOR: Daniel Cobb
  * CREATED: 11/2016
  */
+namespace index_control;
+
+use \read_data as read_data;
 
 require './models/ReadData.Class.php';
 class IndexController
@@ -13,8 +16,9 @@ class IndexController
 
     }
 
-    function dashboard(){
-        $data = new ReadData();
+    function dashboard()
+    {
+        $data = new read_data\ReadData();
         $results = $data->getAllData();
         echo'
         <table>

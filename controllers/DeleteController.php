@@ -4,6 +4,9 @@
  * AUTHOR: Daniel Cobb
  * CREATED: 11/2016
  */
+namespace delete_control;
+
+use \delete_data as delete_data;
 
 require './models/DeleteData.Class.php';
 class DeleteController
@@ -16,10 +19,9 @@ class DeleteController
 
     function deleteUser()
     {
-        if(!empty($_GET['id']))
-        {
+        if(!empty($_GET['id'])) {
             $this->userId = $_GET['id'];
-            $data = new DeleteData($this->userId);
+            $data = new delete_data\DeleteData($this->userId);
             echo $data->deleteData($this->userId);
             echo '<a href="index.php" class="button">Home</a>';
         }

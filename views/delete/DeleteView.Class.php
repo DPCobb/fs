@@ -7,6 +7,7 @@
 
 require './views/View.Class.php';
 require './controllers/DeleteController.php';
+
 class DeleteView extends View
 {
 
@@ -17,7 +18,7 @@ class DeleteView extends View
 
     function contentBuild()
     {
-        $data = new DeleteController();
+        $data = new delete_control\DeleteController();
         echo $data->deleteUser();
     }
 

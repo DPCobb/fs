@@ -13,11 +13,9 @@ $view = new Views();
 
 // View is decided on by index.php?p=[page]
 // If p is not empty decide on view to display
-if (!empty($_GET['p']))
-{
+if (!empty($_GET['p'])) {
     // Use switch/case to decide what p is and what view needs to be displayed
-    switch ($_GET['p'])
-    {
+    switch ($_GET['p']) {
         case 'create':
             $view->displayView('create/index');
             break;
@@ -36,8 +34,7 @@ if (!empty($_GET['p']))
     }
 }
 // If there is no p value show the default, index.php
-else
-{
+else {
     $view->displayView('index/index');
 }
 

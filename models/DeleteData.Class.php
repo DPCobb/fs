@@ -4,10 +4,11 @@
  * AUTHOR: Daniel Cobb
  * CREATED: 11/2016
  */
+namespace delete_data;
 
 class DeleteData
 {
-
+    public $msg;
     /*
      * deleteData Function
      *
@@ -21,12 +22,10 @@ class DeleteData
         include 'DBCred.php';
         $sth = $dbh->prepare("DELETE FROM user WHERE id = :id");
         $sth->bindParam(':id', $id);
-        if($sth->execute())
-        {
+        if($sth->execute()) {
             $this->msg = '<h2>User successfully removed.</h2>';
         }
-        else
-        {
+        else {
             $this->msg = '<h2>Could not remove user</h2>';
         }
 

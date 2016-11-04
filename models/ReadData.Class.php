@@ -4,6 +4,7 @@
  * AUTHOR: Daniel Cobb
  * CREATED: 11/2016
  */
+namespace read_data;
 
 class ReadData
 {

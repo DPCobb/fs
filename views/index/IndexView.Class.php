@@ -7,6 +7,7 @@
 
 require './views/View.Class.php';
 require './controllers/IndexController.php';
+
 class IndexView extends View
 {
 
@@ -17,7 +18,7 @@ class IndexView extends View
 
     function contentBuild()
     {
-        $data = new IndexController();
+        $data = new index_control\IndexController();
         echo $data->dashboard();
     }
 
