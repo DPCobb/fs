@@ -5,7 +5,7 @@
  * CREATED: 11/2016
  */
 
-class View
+abstract class View
 {
     public $title;
 
