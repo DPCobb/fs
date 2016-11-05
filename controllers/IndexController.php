@@ -50,6 +50,7 @@ class IndexController
             ';
         }
         echo '</tbody></table>';
+        echo '<a class="button" href="index.php?p=create">Add User</a>';
     }
 
 }
