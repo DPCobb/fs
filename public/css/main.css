@@ -6,3 +6,7 @@ main{
 table{
     width:100%;
 }
+
+input[type="submit"]{
+    display:block;
+}
