@@ -13,9 +13,13 @@ require './models/CreateData.Class.php';
 
 class CreateController
 {
+    /**
+     * form Builds and returns the form for adding new users.
+     * @return string form structure is returned
+     */
     protected function form()
     {
-        echo '
+        return '
         <form method="post" action="index.php?p=create&action=add" id="newuser">
             <input type="text" name="first" id="firstname" placeholder="Enter your first name" required/>
             <input type="text" name="last" id="lastname" placeholder="Enter your last name" required/>
@@ -26,33 +30,40 @@ class CreateController
         ';
     }
 
+    /**
+     * actionLogic looks to see if url param action is equal to add and if it
+     * does than it instantiates CreateData and calls createData method.
+     * @return string returns either a success message, error, or the add user
+     * form
+     */
     public function actionLogic()
     {
         $output = '';
-        if (isset($_GET['action'])){
-            if ($_GET['action']==='add'){
+        // if action is set
+        if (isset($_GET['action'])) {
+            // if action is equal to add
+            if ($_GET['action'] === 'add') {
+                // instantiate CreateData
                 $data = new create_data\CreateData;
+                // set result equal to createData method
                 $result = $data->createData();
-                if ($result != 0 ) {
-                    echo '<h2>User Added</h2>
+                // if the result is not 0 output = success message / else error
+                if ($result != 0) {
+                    $output = '<h2>User Added</h2>
                     <a class="button" href="index.php">Home</a>
                     ';
+                } else {
+                    $output = 'Something went wrong!';
                 }
-                else {
-                    echo 'Something went wrong!';
-                }
-
-            }
-            else {
+            } else {
+                // if acton isn't === add
                 $output = $this->form();
             }
-        }
-        else {
+        } else {
+            // if action is not set
             $output = $this->form();
         }
-        echo $output;
+        // return the value of output
+        return $output;
     }
-
 }
-
-?>
