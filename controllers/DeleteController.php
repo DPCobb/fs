@@ -18,7 +18,7 @@ class DeleteController
 
     /**
      * deleteUser removes an entry from the database.
-     * @return null
+     * @return string success/error message and home button
      */
     public function deleteUser()
     {
@@ -29,9 +29,7 @@ class DeleteController
             // instantiate DeleteData
             $data = new delete_data\DeleteData($this->userId);
             // echo the results of deleteData
-            echo $data->deleteData($this->userId);
-            // echo a home button
-            echo '<a href="index.php" class="button">Home</a>';
+            return $data->deleteData($this->userId) . '<a href="index.php" class="button">Home</a>';
         }
     }
 }
