@@ -13,5 +13,3 @@ $pass = 'secret';
 
 // Create dbh as a new instance of PDO
 $dbh = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
-
-?>

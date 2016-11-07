@@ -7,7 +7,6 @@
 
 require './views/index/IndexView.Class.php';
 
+// build the view
 $view = new IndexView('Home');
 $view->buildDisplay();
-
-?>

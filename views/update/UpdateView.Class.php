@@ -10,23 +10,32 @@ require './controllers/UpdateController.php';
 
 class UpdateView extends View
 {
-
-    function __construct($title)
+    /**
+     * set the page title
+     * @param string $title sets the page title
+     */
+    public function __construct($title)
     {
         parent::__construct($title);
     }
 
-    function contentBuild()
+    /**
+     * contentBuild builds the main content for the view.
+     * @return null
+     */
+    public function contentBuild()
     {
         $data = new update_control\UpdateController();
         echo $data->updateLogic();
     }
 
-    function buildDisplay()
+    /**
+     * buildDisplay builds the view
+     * @return null
+     */
+    public function buildDisplay()
     {
         $all = $this->createHeader() . $this->contentBuild() . $this->createFooter();
         echo $all;
     }
 }
-
-?>

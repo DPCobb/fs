@@ -10,23 +10,32 @@ require './controllers/ReadController.php';
 
 class ReadView extends View
 {
-
-    function __construct($title)
+    /**
+     * set the page title
+     * @param string $title set the title of the page
+     */
+    public function __construct($title)
     {
         parent::__construct($title);
     }
 
-    function contentBuild()
+    /**
+     * contentBuild builds the main content for the view.
+     * @return null
+     */
+    public function contentBuild()
     {
         $data = new read_control\ReadController();
         echo $data->dashboard();
     }
 
-    function buildDisplay()
+    /**
+     * buildDisplay builds out the view
+     * @return null
+     */
+    public function buildDisplay()
     {
         $all = $this->createHeader() . $this->contentBuild() . $this->createFooter();
         echo $all;
     }
 }
-
-?>

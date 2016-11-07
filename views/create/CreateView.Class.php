@@ -10,23 +10,32 @@ require './controllers/CreateController.php';
 
 class CreateView extends View
 {
-
-    function __construct($title)
+    /**
+     * calls View __construct and passes title.
+     * @param string $title page title
+     */
+    public function __construct($title)
     {
         parent::__construct($title);
     }
 
-    function contentBuild()
+    /**
+     * contentBuild builds the main content for the view.
+     * @return null
+     */
+    public function contentBuild()
     {
         $data = new create_control\CreateController();
         echo $data->actionLogic();
     }
 
-    function buildDisplay()
+    /**
+     * buildDisplay creates the entire view and echos it to the browser
+     * @return null
+     */
+    public function buildDisplay()
     {
         $all = $this->createHeader() . $this->contentBuild() . $this->createFooter();
         echo $all;
     }
 }
-
-?>

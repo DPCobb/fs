@@ -7,7 +7,6 @@
 
 require './views/delete/DeleteView.Class.php';
 
+// Creates the view
 $view = new DeleteView('Remove User');
 $view->buildDisplay();
-
-?>

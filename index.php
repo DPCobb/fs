@@ -7,5 +7,3 @@
 
 // Require the MainController to direct traffic
 require 'controllers/MainController.php';
-
-?>

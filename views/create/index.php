@@ -7,7 +7,6 @@
 
 require './views/create/CreateView.Class.php';
 
+// Creates the view
 $view = new CreateView('Add a new User');
 $view->buildDisplay();
-
-?>

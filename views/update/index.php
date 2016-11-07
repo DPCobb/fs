@@ -7,7 +7,6 @@
 
 require './views/update/UpdateView.Class.php';
 
+// build the view
 $view = new UpdateView('Update A User');
 $view->buildDisplay();
-
-?>

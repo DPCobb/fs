@@ -9,15 +9,19 @@ abstract class View
 {
     public $title;
 
-    function __construct($title)
+    /**
+     * sets the page title
+     * @param string $title sets the page title
+     */
+    public function __construct($title)
     {
         $this->title = $title;
     }
 
 
-    /*
-     * createHeader - Function
-     * createHeader creates the html header
+    /**
+     * createHeader builds the html header
+     * @return null
      */
     public function createHeader()
     {
@@ -38,9 +42,9 @@ abstract class View
         ';
     }
 
-    /*
-     * createFooter - Function
-     * createFooter creates the footer portion of the html
+    /**
+     * createFooter builds the html for the footer
+     * @return null
      */
      public function createFooter()
      {
@@ -51,17 +55,13 @@ abstract class View
          ';
      }
 
-     /*
-      * buildDisplay - Function
-      * buildDisplay constructs and displays the view
-      * This function is polymorphic and will change with different views
+     /**
+      * buildDisplay builds out the view
+      * @return null
       */
-
      public function buildDisplay()
      {
          $all = $this->createHeader() . $this->createFooter();
          echo $all;
      }
 }
-
-?>

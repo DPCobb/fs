@@ -5,13 +5,10 @@
  * CREATED: 11/2016
  */
 
-// Require needed model files
 require './models/Views.Class.php';
 
-// Instantiate class for view logic
 $view = new Views();
 
-// View is decided on by index.php?p=[page]
 // If p is not empty decide on view to display
 if (!empty($_GET['p'])) {
     // Use switch/case to decide what p is and what view needs to be displayed
@@ -37,6 +34,3 @@ if (!empty($_GET['p'])) {
 else {
     $view->displayView('index/index');
 }
-
-
-?>

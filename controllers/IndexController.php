@@ -11,16 +11,21 @@ use \read_data as read_data;
 require './models/ReadData.Class.php';
 class IndexController
 {
-    function __construct()
+    public function __construct()
     {
-
     }
 
-    function dashboard()
+    /**
+     * dashboard echos a parsed data set for the main index.php page.
+     * @return null
+     */
+    public function dashboard()
     {
+        // Fetch all the users from the DB
         $data = new read_data\ReadData();
         $results = $data->getAllData();
-        echo'
+        // echo out the results in a table
+        echo '
         <table>
         <thead>
         <tr>
@@ -35,7 +40,8 @@ class IndexController
         </tr>
         </thead>
         <tbody>';
-        foreach($results as $row) {
+        // foreach parses returned data
+        foreach ($results as $row) {
             echo '
             <tr>
                 <td>' . $row['id'] . '</td>
@@ -52,6 +58,4 @@ class IndexController
         echo '</tbody></table>';
         echo '<a class="button" href="index.php?p=create">Add User</a>';
     }
-
 }
-?>
