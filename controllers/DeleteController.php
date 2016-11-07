@@ -11,21 +11,27 @@ use \delete_data as delete_data;
 require './models/DeleteData.Class.php';
 class DeleteController
 {
-    public $userId;
-    function __construct()
+    private $userId;
+    public function __construct()
     {
-
     }
 
-    function deleteUser()
+    /**
+     * deleteUser removes an entry from the database.
+     * @return null
+     */
+    public function deleteUser()
     {
-        if(!empty($_GET['id'])) {
+        // if url param id is not empty
+        if (!empty($_GET['id'])) {
+            // userid is equal to $_GET id
             $this->userId = $_GET['id'];
+            // instantiate DeleteData
             $data = new delete_data\DeleteData($this->userId);
+            // echo the results of deleteData
             echo $data->deleteData($this->userId);
+            // echo a home button
             echo '<a href="index.php" class="button">Home</a>';
         }
     }
-
 }
-?>
