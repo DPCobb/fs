@@ -17,7 +17,7 @@ class CreateController
      * form Builds and returns the form for adding new users.
      * @return string form structure is returned
      */
-    protected function form()
+    private function form()
     {
         return '
         <form method="post" action="index.php?p=create&action=add" id="newuser">
@@ -39,28 +39,22 @@ class CreateController
     public function actionLogic()
     {
         $output = '';
-        // if action is set
-        if (isset($_GET['action'])) {
-            // if action is equal to add
-            if ($_GET['action'] === 'add') {
-                // instantiate CreateData
-                $data = new create_data\CreateData;
-                // set result equal to createData method
-                $result = $data->createData();
-                // if the result is not 0 output = success message / else error
-                if ($result != 0) {
-                    $output = '<h2>User Added</h2>
-                    <a class="button" href="index.php">Home</a>
-                    ';
-                } else {
-                    $output = 'Something went wrong!';
-                }
+        // if action is set and equals add
+        if (isset($_GET['action']) && $_GET['action'] === 'add') {
+            // instantiate CreateData
+            $data = new create_data\CreateData;
+            // set result equal to createData method
+            $result = $data->createData();
+            // if the result is not 0 output = success message / else error
+            if ($result != 0) {
+                $output = '<h2>User Added</h2>
+                <a class="button" href="index.php">Home</a>
+                ';
             } else {
-                // if acton isn't === add
-                $output = $this->form();
+                $output = 'Something went wrong!';
             }
         } else {
-            // if action is not set
+            // if acton isn't === add
             $output = $this->form();
         }
         // return the value of output
