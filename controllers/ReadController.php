@@ -12,14 +12,14 @@ require './models/ReadData.Class.php';
 
 class ReadController
 {
-    public $data;
+    private $data;
 
     /**
      * Assigns the value of data var to new instance of ReadData.
      */
     public function __construct()
     {
-        $this->data = new read_data\ReadData();
+        $this->data = new read_data\ReadData;
     }
 
     /**
@@ -72,8 +72,8 @@ class ReadController
      */
     public function dashboard()
     {
-        // if id is set in the url
-        if (isset($_GET['id'])) {
+        // if id is set in the url and not empty
+        if (isset($_GET['id']) && !empty($_GET['id'])) {
             // userId equals url param id
             $userId = $_GET['id'];
             // pass user id to getData method
