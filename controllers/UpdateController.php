@@ -16,14 +16,16 @@ require './models/ReadData.Class.php';
 
 class UpdateController
 {
-    protected $id;
+    private $id;
 
     /**
      * Sets the value of id.
      */
     public function __construct()
     {
-        $this->id = $_GET['id'];
+        if (isset($_GET['id']) && !empty($_GET['id'])) {
+            $this->id = $_GET['id'];
+        }
     }
 
     /**
@@ -60,29 +62,22 @@ class UpdateController
     private function updateUser()
     {
         // if action is set and === updateuser
-        if (isset($_GET['action'])) {
-            if ($_GET['action'] === 'updateuser') {
-                // set value of userid
-                $userid = $_GET['id'];
-                // pass userid to UpdateData
-                $data = new update_data\UpdateData($userid);
-                // set result to returned value of updateUser method
-                $result = $data->updateUser();
-                // if result is not equal to 0
-                if ($result != 0) {
-                    return '<h2>User Updated</h2>
-                    <a class="button" href="index.php">Home</a>
-                    ';
-                } else {
-                    // user id does not exist
-                    return 'Something went wrong!';
-                }
+        if (isset($_GET['action']) && $_GET['action'] === 'updateuser') {
+            // pass id to UpdateData
+            $data = new update_data\UpdateData($this->id);
+            // set result to returned value of updateUser method
+            $result = $data->updateUser();
+            // if result is not equal to 0
+            if ($result != 0) {
+                return '<h2>User Updated</h2>
+                <a class="button" href="index.php">Home</a>
+                ';
             } else {
-                // action is not updateuser
-                return $this->getUser();
+                // user id does not exist
+                return 'Something went wrong!';
             }
         } else {
-            // no action set
+            // no action set or does not equal updateuser
             return $this->getUser();
         }
     }
@@ -95,11 +90,11 @@ class UpdateController
     {
         $dataOut;
         // if action is set
-        if (isset($_GET['action'])) {
+        if (isset($_GET['action']) && $_GET['action'] === 'updateuser') {
             // call updateUser and add changes to db
             $dataOut = $this->updateUser();
         } else {
-            // get user info if action is not set
+            // get user info if action is not set or does not equal
             $dataOut = $this->getUser();
         }
         // return dataOut
