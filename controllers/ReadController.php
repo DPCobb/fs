@@ -7,12 +7,15 @@
 namespace read_control;
 
 use \read_data as read_data;
+use \html_control as html_control;
 
+require 'HtmlController.php';
 require './models/ReadData.Class.php';
 
 class ReadController
 {
     private $data;
+    private $html;
 
     /**
      * Assigns the value of data var to new instance of ReadData.
@@ -20,6 +23,7 @@ class ReadController
     public function __construct()
     {
         $this->data = new read_data\ReadData;
+        $this->html = new html_control\HtmlController;
     }
 
     /**
@@ -31,35 +35,8 @@ class ReadController
     {
         // if data does not equal 0 than parse the data
         if ($data != 0) {
-            echo'
-            <table>
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Update Entry</th>
-                <th>Remove Entry</th>
-            </tr>
-            </thead>
-            <tbody>';
-            // use foreach loop to parse data set
-            foreach ($data as $row) {
-                echo '
-                <tr>
-                    <td>' . $row['id'] . '</td>
-                    <td>' . $row['firstname'] . '</td>
-                    <td>' . $row['lastname'] . '</td>
-                    <td>' . $row['email'] . '</td>
-                    <td>' . $row['password'] . '</td>
-                    <td><a class="button" href="index.php?p=update&id=' . $row['id'] . '">Update</a></td>
-                    <td><a class="button" href="index.php?p=delete&id=' . $row['id'] . '">Delete</a></td>
-                </tr>
-                ';
-            }
-            echo '</tbody></table>';
+            // Build out the table results from HtmlController
+            $this->html->readViewHTML($data);
         } else {
             // if data does equal 0 echo failure
             echo '<h2>Not a valid User ID</h2>';
