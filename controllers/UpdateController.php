@@ -10,13 +10,16 @@ namespace update_control;
 
 use \update_data as update_data;
 use \read_data as read_data;
+use \html_control as html_control;
 
+require 'HtmlController.php';
 require './models/UpdateData.Class.php';
 require './models/ReadData.Class.php';
 
 class UpdateController
 {
     private $id;
+    public $html;
 
     /**
      * Sets the value of id.
@@ -26,6 +29,7 @@ class UpdateController
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             $this->id = $_GET['id'];
         }
+        $this->html = new html_control\HtmlController;
     }
 
     /**
@@ -38,21 +42,7 @@ class UpdateController
         $fetchData = new read_data\ReadData();
         $results = $fetchData->getData($this->id);
         // build the update form to return
-        foreach ($results as $row) {
-            return '
-            <form method="POST" action="index.php?p=update&id=' . $this->id . '&action=updateuser">
-                <label for="email">Email</label>
-                <input type="text" value=' . $row['email'] . ' name="email" id="email"/>
-                <label for="first">Firstname</label>
-                <input type="text" value=' . $row['firstname'] . ' name="first" id="first"/>
-                <label for="last">Lastname</label>
-                <input type="text" value=' . $row['lastname'] . ' name="last" id="last"/>
-                <label for="pass">Password</label>
-                <input type="text" value=' . $row['password'] . ' name="pass" id="pass"/>
-                <input type="submit" value="Update User"/>
-            </form>
-            ';
-        }
+        $this->html->updateViewHtml($results, $this->id);
     }
 
     /**
