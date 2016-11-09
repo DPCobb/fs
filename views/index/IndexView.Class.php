@@ -26,7 +26,7 @@ class IndexView extends View
     public function contentBuild()
     {
         $data = new index_control\IndexController();
-        echo $data->dashboard();
+        echo $data->mainView();
     }
 
     /**
