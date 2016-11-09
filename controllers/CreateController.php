@@ -8,26 +8,19 @@
 namespace create_control;
 
 use \create_data as create_data;
+use \html_control as html_control;
 
+require 'HtmlController.php';
 require './models/CreateData.Class.php';
 
 class CreateController
 {
-    /**
-     * form Builds and returns the form for adding new users.
-     * @return string form structure is returned
-     */
-    private function form()
+    private $html;
+    public $output;
+
+    public function __construct()
     {
-        return '
-        <form method="post" action="index.php?p=create&action=add" id="newuser">
-            <input type="text" name="first" id="firstname" placeholder="Enter your first name" required/>
-            <input type="text" name="last" id="lastname" placeholder="Enter your last name" required/>
-            <input type="email" name="email" id="email" placeholder="Enter your email" required/>
-            <input type="text" name="password" id="pass" placeholder="Enter your password" required/>
-            <input type="submit" value="Create"/>
-        </form>
-        ';
+        $this->html = new html_control\HtmlController;
     }
 
     /**
@@ -38,7 +31,6 @@ class CreateController
      */
     public function actionLogic()
     {
-        $output = '';
         // if action is set and equals add
         if (isset($_GET['action']) && $_GET['action'] === 'add') {
             // instantiate CreateData
@@ -47,17 +39,17 @@ class CreateController
             $result = $data->createData();
             // if the result is not 0 output = success message / else error
             if ($result != 0) {
-                $output = '<h2>User Added</h2>
+                $this->output = '<h2>User Added</h2>
                 <a class="button" href="index.php">Home</a>
                 ';
             } else {
-                $output = 'Something went wrong!';
+                $this->output = 'Something went wrong!';
             }
         } else {
-            // if acton isn't === add
-            $output = $this->form();
+            // if acton isn't === add build the add form
+            $this->output = $this->html->createViewHtml();
         }
         // return the value of output
-        return $output;
+        return $this->output;
     }
 }
