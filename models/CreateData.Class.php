@@ -12,6 +12,7 @@ class CreateData
     private $first;
     private $last;
     private $pass;
+    public $result;
 
     /**
      * sets up variables and sanitizes them
@@ -19,12 +20,18 @@ class CreateData
      */
     public function __construct()
     {
-        // sanitize inputs and create salt
-        $this->email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
-        $this->first = filter_var($_POST['first'], FILTER_SANITIZE_STRING);
-        $this->last = filter_var($_POST['last'], FILTER_SANITIZE_STRING);
-        $salt = md5($this->email);
-        $this->pass = substr(password_hash($salt.$_POST['password'], PASSWORD_DEFAULT), 0, 10);
+        // sanitize inputs and create salt if entries are not empty
+        if (!empty($_POST['email']) && !empty($_POST['first']) && !empty($_POST['last']) && !empty($_POST['password'])) {
+            $this->email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+            $this->first = filter_var($_POST['first'], FILTER_SANITIZE_STRING);
+            $this->last = filter_var($_POST['last'], FILTER_SANITIZE_STRING);
+            $salt = md5($this->email);
+            $this->pass = substr(password_hash($salt.$_POST['password'], PASSWORD_DEFAULT), 0, 10);
+        }
+        else{
+            header('Location: index.php?p=create');
+            exit();
+        }
     }
 
     /**
@@ -35,7 +42,6 @@ class CreateData
     {
         include 'DBCred.php';
 
-        $result = '';
         // prepare insert statement
         $sth = $dbh->prepare("INSERT INTO user (email, firstname, lastname, password) VALUES (:email, :firstname, :lastname, :password)");
         // bind the parameters
@@ -45,11 +51,11 @@ class CreateData
         $sth->bindParam(':password', $this->pass);
         // if execute is successful result = 1, else result = 0
         if ($sth->execute()) {
-            $result = 1;
+            $this->result = 1;
         } else {
-            $result =0;
+            $this->result = 0;
         }
         // return result
-        return $result;
+        return $this->result;
     }
 }
