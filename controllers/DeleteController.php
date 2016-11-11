@@ -22,7 +22,7 @@ class DeleteController
         // if url param id is not empty
         if (!empty($_GET['id'])) {
             // userid is equal to $_GET id
-            $this->userId = $_GET['id'];
+            $this->userId = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
         }
     }
 

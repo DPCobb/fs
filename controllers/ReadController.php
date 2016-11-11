@@ -52,7 +52,7 @@ class ReadController
         // if id is set in the url and not empty
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             // userId equals url param id
-            $userId = $_GET['id'];
+            $userId = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
             // pass user id to getData method
             $results = $this->data->getData($userId);
             // if results are empty, results = 0

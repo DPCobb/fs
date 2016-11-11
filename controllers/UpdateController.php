@@ -27,7 +27,7 @@ class UpdateController
     public function __construct()
     {
         if (isset($_GET['id']) && !empty($_GET['id'])) {
-            $this->id = $_GET['id'];
+            $this->id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
         }
         $this->html = new html_control\HtmlController;
     }
