@@ -24,6 +24,7 @@ class ReadData
         //execute select
         $sth->execute();
         $result = $sth->fetchAll();
+        $result = json_encode($result);
         // return results
         return $result;
     }
@@ -40,6 +41,7 @@ class ReadData
         //execute
         $sth->execute();
         $result = $sth->fetchAll();
+        $result = json_encode($result);
         // return results
         return $result;
     }
