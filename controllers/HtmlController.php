@@ -29,20 +29,22 @@ class HtmlController
         </tr>
         </thead>
         <tbody>';
-        // foreach parses returned data
-        foreach ($results as $row) {
+        //parse data results
+        $i = 0;
+        while ($i < count($results)) {
             echo '
             <tr>
-                <td>' . $row['id'] . '</td>
-                <td>' . $row['firstname'] . '</td>
-                <td>' . $row['lastname'] . '</td>
-                <td>' . $row['email'] . '</td>
-                <td>' . $row['password'] . '</td>
-                <td><a class="button" href="index.php?p=read&id=' . $row['id'] . '">View</a></td>
-                <td><a class="button" href="index.php?p=update&id=' . $row['id'] . '">Update</a></td>
-                <td><a class="button" href="index.php?p=delete&id=' . $row['id'] . '">Delete</a></td>
+                <td>' . $results[$i]->id . '</td>
+                <td>' . $results[$i]->firstname . '</td>
+                <td>' . $results[$i]->lastname . '</td>
+                <td>' . $results[$i]->email . '</td>
+                <td>' . $results[$i]->password . '</td>
+                <td><a class="button" href="index.php?p=read&id=' . $results[$i]->id . '">View</a></td>
+                <td><a class="button" href="index.php?p=update&id=' . $results[$i]->id . '">Update</a></td>
+                <td><a class="button" href="index.php?p=delete&id=' . $results[$i]->id . '">Delete</a></td>
             </tr>
             ';
+            $i++;
         }
         echo '</tbody></table><a class="button" href="index.php?p=create">Add User</a>';
     }
@@ -68,19 +70,21 @@ class HtmlController
         </tr>
         </thead>
         <tbody>';
-        // use foreach loop to parse data set
-        foreach ($results as $row) {
+        //parse data results
+        $i = 0;
+        while ($i < count($results)) {
             echo '
             <tr>
-                <td>' . $row['id'] . '</td>
-                <td>' . $row['firstname'] . '</td>
-                <td>' . $row['lastname'] . '</td>
-                <td>' . $row['email'] . '</td>
-                <td>' . $row['password'] . '</td>
-                <td><a class="button" href="index.php?p=update&id=' . $row['id'] . '">Update</a></td>
-                <td><a class="button" href="index.php?p=delete&id=' . $row['id'] . '">Delete</a></td>
+                <td>' . $results[$i]->id . '</td>
+                <td>' . $results[$i]->firstname . '</td>
+                <td>' . $results[$i]->lastname . '</td>
+                <td>' . $results[$i]->email . '</td>
+                <td>' . $results[$i]->password . '</td>
+                <td><a class="button" href="index.php?p=update&id=' . $results[$i]->id . '">Update</a></td>
+                <td><a class="button" href="index.php?p=delete&id=' . $results[$i]->id . '">Delete</a></td>
             </tr>
             ';
+            $i++;
         }
         echo '</tbody></table>';
     }
@@ -93,20 +97,23 @@ class HtmlController
      */
     public function updateViewHtml($results, $id)
     {
-        foreach ($results as $row) {
+        //parse data results
+        $i = 0;
+        while ($i < count($results)) {
             echo '
             <form method="POST" action="index.php?p=update&id=' . $id . '&action=updateuser">
                 <label for="email">Email</label>
-                <input type="text" value=' . $row['email'] . ' name="email" id="email"/>
+                <input type="text" value=' . $results[$i]->email . ' name="email" id="email"/>
                 <label for="first">Firstname</label>
-                <input type="text" value=' . $row['firstname'] . ' name="first" id="first"/>
+                <input type="text" value=' . $results[$i]->firstname . ' name="first" id="first"/>
                 <label for="last">Lastname</label>
-                <input type="text" value=' . $row['lastname'] . ' name="last" id="last"/>
+                <input type="text" value=' . $results[$i]->lastname . ' name="last" id="last"/>
                 <label for="pass">Password</label>
-                <input type="text" value=' . $row['password'] . ' name="pass" id="pass"/>
+                <input type="text" value=' . $results[$i]->password . ' name="pass" id="pass"/>
                 <input type="submit" value="Update User"/>
             </form>
             ';
+            $i++;
         }
     }
 
