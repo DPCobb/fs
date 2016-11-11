@@ -30,6 +30,7 @@ class IndexController
         $data = new read_data\ReadData();
         $results = $data->getAllData();
         // build out the results in a table
+        $results = json_decode($results);
         $this->html->mainViewHTML($results);
 
     }

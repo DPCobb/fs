@@ -34,7 +34,7 @@ class ReadController
     private function buildDashboard($data)
     {
         // if data does not equal 0 than parse the data
-        if ($data != 0) {
+        if (!empty($data)) {
             // Build out the table results from HtmlController
             $this->html->readViewHTML($data);
         } else {
@@ -64,6 +64,7 @@ class ReadController
             $results = $this->data->getAllData();
         }
         // send results to buildDashboard
+        $results = json_decode($results);
         $this->buildDashboard($results);
     }
 }

@@ -42,6 +42,7 @@ class UpdateController
         $fetchData = new read_data\ReadData();
         $results = $fetchData->getData($this->id);
         // build the update form to return
+        $results = json_decode($results);
         $this->html->updateViewHtml($results, $this->id);
     }
 
