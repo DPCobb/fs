@@ -1,22 +1,19 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: danielcobb
- * Date: 11/7/16
- * Time: 7:25 PM
+/*
+ * PROJECT: Formstack Assessment
+ * AUTHOR: Daniel Cobb
+ * CREATED: 11/2016
  */
-require './controllers/ReadController.php';
+require_once './controllers/ReadController.php';
+//require './controllers/MainController.php';
 require_once './models/ReadData.Class.php';
 
-use \read_data as read_data;
 
 class ReadControllerTest extends PHPUnit_Framework_TestCase
 {
-    public function test()
+    public function readTest()
     {
-        $stub = $this->getMockBuilder('ReadData')->getMock();
-        $stub->method('getData')->willReturn('none');
         $control = new read_control\ReadController;
         $_GET['id'] = '1';
         $control->dashboard();

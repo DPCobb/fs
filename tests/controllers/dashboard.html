@@ -2,7 +2,7 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>Dashboard for /Users/danielcobb/Desktop/fs/models</title>
+  <title>Dashboard for /Users/danielcobb/Desktop/fs/controllers</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../css/bootstrap.min.css" rel="stylesheet">
   <link href="../css/nv.d3.min.css" rel="stylesheet">
@@ -19,7 +19,7 @@
      <div class="col-md-12">
       <ol class="breadcrumb">
         <li><a href="../index.html">/Users/danielcobb/Desktop/fs</a></li>
-        <li><a href="index.html">models</a></li>
+        <li><a href="index.html">controllers</a></li>
         <li class="active">(Dashboard)</li>
 
       </ol>
@@ -59,8 +59,8 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="ReadData.Class.php.html#9">ReadData</a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="CreateData.Class.php.html#9">CreateData</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="HtmlController.php.html#9">HtmlController</a></td><td class="text-right">2%</td></tr>
+       <tr><td><a href="CreateController.php.html#16">CreateController</a></td><td class="text-right">41%</td></tr>
 
        </tbody>
       </table>
@@ -77,7 +77,8 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="CreateData.Class.php.html#9">CreateData</a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="HtmlController.php.html#9">HtmlController</a></td><td class="text-right">52</td></tr>
+       <tr><td><a href="CreateController.php.html#16">CreateController</a></td><td class="text-right">9</td></tr>
 
        </tbody>
       </table>
@@ -115,10 +116,10 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="ReadData.Class.php.html#36"><abbr title="ReadData::getAllData">getAllData</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="ReadData.Class.php.html#17"><abbr title="ReadData::getData">getData</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="CreateData.Class.php.html#41"><abbr title="CreateData::createData">createData</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="CreateData.Class.php.html#21"><abbr title="CreateData::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="HtmlController.php.html#98"><abbr title="HtmlController::updateViewHtml">updateViewHtml</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="HtmlController.php.html#57"><abbr title="HtmlController::readViewHTML">readViewHTML</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="HtmlController.php.html#15"><abbr title="HtmlController::mainViewHTML">mainViewHTML</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CreateController.php.html#32"><abbr title="CreateController::actionLogic">actionLogic</abbr></a></td><td class="text-right">30%</td></tr>
 
        </tbody>
       </table>
@@ -135,8 +136,10 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="CreateData.Class.php.html#21"><abbr title="CreateData::__construct">__construct</abbr></a></td><td class="text-right">30</td></tr>
-       <tr><td><a href="CreateData.Class.php.html#41"><abbr title="CreateData::createData">createData</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="CreateController.php.html#32"><abbr title="CreateController::actionLogic">actionLogic</abbr></a></td><td class="text-right">9</td></tr>
+       <tr><td><a href="HtmlController.php.html#98"><abbr title="HtmlController::updateViewHtml">updateViewHtml</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="HtmlController.php.html#15"><abbr title="HtmlController::mainViewHTML">mainViewHTML</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="HtmlController.php.html#57"><abbr title="HtmlController::readViewHTML">readViewHTML</abbr></a></td><td class="text-right">6</td></tr>
 
        </tbody>
       </table>
@@ -167,7 +170,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#classCoverageDistribution svg')
-      .datum(getCoverageDistributionData([2,0,0,0,0,0,0,0,0,0,0,0], "Class Coverage"))
+      .datum(getCoverageDistributionData([0,1,0,0,0,1,0,0,0,0,0,0], "Class Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -185,7 +188,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#methodCoverageDistribution svg')
-      .datum(getCoverageDistributionData([4,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
+      .datum(getCoverageDistributionData([3,0,0,0,1,0,0,0,0,0,0,2], "Method Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -235,7 +238,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Cyclomatic Complexity');
 
     d3.select('#classComplexity svg')
-      .datum(getComplexityData([[0,7,"<a href=\"CreateData.Class.php.html#9\">CreateData<\/a>"],[0,2,"<a href=\"ReadData.Class.php.html#9\">ReadData<\/a>"]], 'Class Complexity'))
+      .datum(getComplexityData([[41.666666666667,5,"<a href=\"CreateController.php.html#16\">CreateController<\/a>"],[2.3255813953488,7,"<a href=\"HtmlController.php.html#9\">HtmlController<\/a>"]], 'Class Complexity'))
       .transition()
       .duration(500)
       .call(chart);
@@ -259,7 +262,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Method Complexity');
 
     d3.select('#methodComplexity svg')
-      .datum(getComplexityData([[0,5,"<a href=\"CreateData.Class.php.html#21\">CreateData::__construct<\/a>"],[0,2,"<a href=\"CreateData.Class.php.html#41\">CreateData::createData<\/a>"],[0,1,"<a href=\"ReadData.Class.php.html#17\">ReadData::getData<\/a>"],[0,1,"<a href=\"ReadData.Class.php.html#36\">ReadData::getAllData<\/a>"]], 'Method Complexity'))
+      .datum(getComplexityData([[100,1,"<a href=\"CreateController.php.html#21\">CreateController::__construct<\/a>"],[30,4,"<a href=\"CreateController.php.html#32\">CreateController::actionLogic<\/a>"],[0,2,"<a href=\"HtmlController.php.html#15\">HtmlController::mainViewHTML<\/a>"],[0,2,"<a href=\"HtmlController.php.html#57\">HtmlController::readViewHTML<\/a>"],[0,2,"<a href=\"HtmlController.php.html#98\">HtmlController::updateViewHtml<\/a>"],[100,1,"<a href=\"HtmlController.php.html#124\">HtmlController::createViewHtml<\/a>"]], 'Method Complexity'))
       .transition()
       .duration(500)
       .call(chart);
